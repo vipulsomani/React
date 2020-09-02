@@ -7,7 +7,8 @@ class App extends Component{
   return (
     <div className="App">
       <h1> Hii I am here</h1>
-      <Person name = "vipul"> </Person>
+      <button>Switch Name</button>
+      <Person name = "vipul"> Hii i am childre property</Person>
       <Person name = " Somani"> </Person>
       <Person name = "capg"> </Person>
       
