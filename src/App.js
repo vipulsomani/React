@@ -36,7 +36,8 @@ togglePersonHandler = () => {
 
   render() {
     const style ={
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color : 'white',
       font: 'inherit',
       border:'1px solid blue',
       padding: '8px',
@@ -59,11 +60,18 @@ togglePersonHandler = () => {
         })}
         </div>
       )
+      style.backgroundColor= 'red';
     }
-    
+    let classes = [];
+    if(this.state.persons.length <=2){
+      classes.push('red'); //classes =['red']
+    }
+    if(this.state.persons.length <=1){
+      classes.push('bold');//classes = ['red','bold']
+    }
     return (
     <div className="App">
-      <h1> Hii I am here</h1>
+      <h1 className = {classes.join(' ')}> Hii I am here</h1>
       <button  
       style={style}
       onClick ={ this.togglePersonHandler}>Switch Name</button>
