@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import './App.css';
-import Person from './Person/Person';
+import Persons from '../component/Persons/Persons';
+import Cockpit from '../component/Cockpit/Cockpit';
 
 class App extends Component{
   state = {
@@ -35,46 +36,26 @@ togglePersonHandler = () => {
 }
 
   render() {
-    const style ={
-      backgroundColor: 'green',
-      color : 'white',
-      font: 'inherit',
-      border:'1px solid blue',
-      padding: '8px',
-      cursor:'pointer'
 
-    };
 
     let persons =null;
     if(this.state.showPerson){
       persons = (
         <div>
-        {this.state.persons.map((person,index) =>{
-            return <Person 
-            click = { () => this.deletePersonHandler(index)}
-            name={person.name} 
-            age={person.age}
-            key ={person.id}
-            changed ={ (event) => this.nameChangedHandler(event,person.id)}
-            ></Person>
-        })}
+        <Persons 
+        persons ={this.state.persons}
+        clicked ={this,this.deletePersonHandler}
+        changed ={this.nameChangedHandler}></Persons>
         </div>
       )
-      style.backgroundColor= 'red';
+      
     }
-    let classes = [];
-    if(this.state.persons.length <=2){
-      classes.push('red'); //classes =['red']
-    }
-    if(this.state.persons.length <=1){
-      classes.push('bold');//classes = ['red','bold']
-    }
+    
     return (
     <div className="App">
-      <h1 className = {classes.join(' ')}> Hii I am here</h1>
-      <button  
-      style={style}
-      onClick ={ this.togglePersonHandler}>Switch Name</button>
+      <Cockpit showPersons={this.state.showPerson}
+      persons = {this.state.persons}
+      clicked ={this.togglePersonHandler}/>
       {persons}
       </div>
      //<Person name = " Somani"> </Person>
